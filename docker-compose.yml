@@ -12,8 +12,8 @@ services:
           volumes:
                   - /opt/smokeping/data:/data
                   - /opt/smokeping/etc/config:/config
-                  - /opt/smokeping/etc/smokeping_secrets:/opt/smokeping/etc/
-                  - /opt/smokeping/telegram-send.conf:/etc/
+                  - /opt/smokeping/etc/smokeping_secrets:/opt/smokeping/etc/smokeping_secrets
+                  - /opt/smokeping/telegram-send.conf:/etc/telegram-send.conf
           ports:
                   - "80:80"
           restart: unless-stopped

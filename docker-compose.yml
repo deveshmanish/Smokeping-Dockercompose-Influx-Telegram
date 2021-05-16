@@ -2,7 +2,7 @@ version: "3.3"
 services:
   smokeping-master:
           container_name: smokeping-master
-          image: deveshmanish/smokeping:custom-master-test
+          image: deveshmanish/smokeping:master-debian
           hostname: smokeping-master
           environment:
             - PUID=1000

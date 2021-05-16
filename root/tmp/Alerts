@@ -1,0 +1,39 @@
+*** Alerts ***
+to = |/usr/local/bin/tg-send
+from = alert@smokeping.com
+edgetrigger = yes
+
++loss5
+type=matcher
+pattern = CheckLoss(l=>5, x=>3)
+comment = Loss more than 5%
+
++loss10
+type=matcher
+pattern = CheckLoss(l=>10, x=>3)
+comment = Loss more than 10%
+
++latency10
+type = matcher
+pattern = CheckLatency(l=>10, x=>3)
+comment = Latency more than 10ms.
+
++latency25
+type = matcher
+pattern = CheckLatency(l=>25, x=>3)
+comment = Latency more than 25ms.
+
++latency50
+type = matcher
+pattern = CheckLatency(l=>50, x=>3)
+comment = Latency more than 50ms.
+
++latency80
+type = matcher
+pattern = CheckLatency(l=>80, x=>3)
+comment = Latency more than 80ms.
+
++latency100
+type = matcher
+pattern = CheckLatency(l=>100, x=>3)
+comment = Latency more than 100ms.

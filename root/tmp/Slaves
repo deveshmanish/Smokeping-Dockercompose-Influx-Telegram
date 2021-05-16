@@ -1,0 +1,12 @@
+*** Slaves ***
+secrets=/opt/smokeping/etc/smokeping_secrets
+
++smokeping-slave1
+display_name=smokeping-slave1
+color=67f43f
+location=location1
+
++slave2
+display_name=slave2
+color=f49a72
+location=location2

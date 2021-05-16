@@ -1,0 +1,6 @@
+*** InfluxDB ***
+
+host = "influxdb ip"
+database = smokeping
+timeout = 10
+port = 8086

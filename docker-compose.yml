@@ -1,0 +1,20 @@
+version: "3.3"
+services:
+  smokeping-master:
+          container_name: smokeping-master
+          image: deveshmanish/smokeping:custom-master-test
+          hostname: smokeping-master
+          environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Asia/Kolkata
+            - SMOKEPING_EXTRA_FLAGS="--debug-daemon"
+          volumes:
+                  - /opt/smokeping/data:/data
+                  - /opt/smokeping/etc/config:/config
+                  - /opt/smokeping/etc/smokeping_secrets:/opt/smokeping/etc/
+                  - /opt/smokeping/telegram-send.conf:/etc/
+          ports:
+                  - "80:80"
+          restart: unless-stopped
+          network_mode: bridge

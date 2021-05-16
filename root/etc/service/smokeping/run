@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export LANG=C
+export LC_ALL=
+
+exec /opt/smokeping/bin/smokeping --config="/config/config" --nodaemon $SMOKEPING_EXTRA_FLAGS

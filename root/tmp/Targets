@@ -1,0 +1,127 @@
+*** Targets ***
+
+
+#slaves = sensor-has-pi-sr-sbc-sr-sbc sensor-mao-pi-wr-bb sensor-ubl-pi-sr-sbc sensor-pnbe-pi-er-pnbe sensor-ned-pi-sr-sc sensor-ed-pi-sr-mas sensor-tvc-pi-sr-ers sensor-adi-pi-wr-adi sensor-jp-pi-nr-jp sensor-ajj-vm-sr-mas sensor-ers-vm-sr-ers sensor-sc-vm-sr-sc sensor-sbc-vm-sr-sbc sensor-bbs-vm-er-bbs sensor-mum-vm-wr-bb sensor-koaa-vm-er-koaa sensor-ggn-vm-nr-dlincr sensor-ndls-vm-nr-dlincr sensor-mas-vm-sr-mas
+slaves = sensor-ned-pi-sr-sc sensor-sc-vm-sr-sc sensor-has-pi-sr-sbc sensor-ubl-pi-sr-sbc sensor-ajj-vm-sr-mas sensor-ed-pi-sr-mas sensor-mas-vm-sr-mas sensor-tvc-pi-sr-ers sensor-adi-pi-wr-adi sensor-mum-vm-wr-bb sensor-koaa-vm-er-koaa sensor-bbs-vm-er-bbs sensor-pnbe-pi-er-pnbe sensor-ndls-vm-nr-dlincr
+#slaves = sensor-ndls-vm-nr-dlincr sensor-sc-vm sensor-mas-vm sensor-ajj-vm sensor-ed-pi sensor-tvc-pi sensor-ubl-pi sensor-has-pi sensor-koaa-vm sensor-bbs-vm sensor-pnbe-pi sensor-mum-vm sensor-ned-pi sensor-adi-pi
+alerts = loss5,latency25
+
+menu = Top
+title = Network Latency Grapher
+remark = Welcome to the SmokePing website of . \
+         Here you will learn all about the latency of our  network.
+
+probe = FPing
+
++ Latency
+menu = Latency
+title = Latency
+
+++ Google
+menu = Google
+title = www.google.com
+host = www.google.com
+influx_service_type = google
+
+++ Facebook
+menu = Facebook
+title = www.facebook.com
+host = www.facebook.com
+influx_service_type = facebook
+
+++ Youtube
+menu = YouTube
+title = YouTube
+host = youtube.com
+influx_service_type = youtube
+
+++ Twitter
+menu = Twitter
+title = twitter.com
+host = twitter.com
+influx_service_type = twitter
+alerts = loss5,latency100
+
+++ Steam
+menu = Steam
+title = store.steampowered.com
+host = store.steampowered.com
+influx_service_type = steam
+alerts = loss5,latency50
+
+++ Webex
+menu = Webex
+title = Webex
+host = www.webex.com
+
++ DNSPing
+menu = DNS
+title = DNS Latency
+
+++ GoogleDNS1Ping
+menu = Google DNS 1 Ping
+title = Google DNS 8.8.8.8 Ping
+host = 8.8.8.8
+influx_service_type = googleping(8.8)
+alerts = loss5,latency50
+
+++ GoogleDNS2Ping
+menu = Google DNS 2 Ping
+title = Google DNS 8.8.8.4 Ping
+host = 8.8.8.4
+influx_service_type = googleping(8.4)
+alerts = loss5,latency50
+
++ DNSProbes
+menu = DNS Probes
+title = DNS Probes
+probe = DNS
+lookup = www.google.com
+
+++ GoogleDNS1
+menu = Google DNS 1
+title = Google DNS 8.8.8.8
+host = www.google.com
+server = 8.8.8.8
+influx_service_type = dns(8.8.8.8)
+alerts = loss5,latency50
+
+++ GoogleDNS2
+menu = Google DNS 2
+title = Google DNS 8.8.8.4
+host = www.google.com
+server = 8.8.8.4
+influx_service_type = dns(8.8.8.4)
+alerts = loss5,latency50
+
++ SpeedtestProbes
+menu = Speedtest
+title = Speedtest Probes
+alerts = 
+
+++ download
+title = Speedtest Download
+probe = speedtest-download
+#server = 1155
+measurement = download
+host = dummy.com
+influx_service_type = speedtest-download
+
+++ upload
+title = Speedtest Upload
+probe = speedtest-upload
+#server = 1155
+measurement = upload
+host = dummy.com
+influx_service_type = speedtest-upload
+
++ YouTubeDLProbe
+menu = YouTube Download
+title = YouTubeDL Probe
+
+++ BestVideoEver
+menu = Best Video Ever
+title = Best Video Ever 3:33, 16M, 720p
+probe = YoutubeDL1h
+url = https://www.youtube.com/watch?v=dQw4w9WgXcQ
+host = youtube.com

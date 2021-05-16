@@ -1,0 +1,52 @@
+#!/bin/bash
+
+#$1 is alert name
+#$2 is target
+#$3 is loss pattern
+#$4 is rtt pattern
+#$5 is host
+#$6 us edge trigger value
+
+set -e
+
+if [ "$6" -eq "1" ]; then
+  status="down"
+else
+  status="up"
+fi
+
+read -ra hostarray <<<"$2"
+len="${#hostarray[@]}"
+if [[ "$len" -gt 1 ]]
+then
+  hostname=${hostarray[2]}
+  hostname=${hostname%]}
+  target=${hostarray[0]}
+  mtrout=`ssh -i /.ssh/id_rsa root@"$hostname" "bash -c 'docker exec -i \$hostname mtr -n -c5 -rw \$5'"`
+else
+  hostname="smokeping-master"
+  target=$2
+  mtrout=`mtr -n -c5 -rw $5`
+fi
+
+text="$hostname
+=============
+Alert: $1
+Target: $2
+Loss Pattern: $3
+Rtt Pattern: $4
+Host: $5
+Trigger: $status
+"
+#Additional feature to write alerts to influxdb
+
+#loss="$(echo $3 | sed 's+ +/ +g')"
+#loss="$(echo $loss | sed 's+,+/,+g')"
+#rtt="$(echo $4 | sed 's+ +/ +g')"
+#rtt="$(echo $rtt | sed 's+,+/,+g')"
+
+
+#curl -i -XPOST 'http://172.27.32.71:8086/write?db=sensorAlerts' \
+#--data-binary "status,hostname=$host,alert=$1,target=$target,host=$5 value=$6"
+
+echo "$text $mtrout" | /usr/local/bin/telegram-send -g --stdin

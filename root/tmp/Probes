@@ -1,0 +1,92 @@
+*** Probes ***
+
++ FPing
+binary = /usr/bin/fping
+
++ Curl
+binary = /usr/bin/curl
+offset = random
+pings = 5
+timeout = 5
+forks = 5
+urlformat = http://%host%/
+
+++ CurlFullPage
+agent =  User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:36.0.1) Gecko/20100101 Firefox/36.0.1
+follow_redirects = yes
+include_redirects = yes
+pings = 3
+timeout = 20
+insecure_ssl = 1
+offset = random
+
+++ CurlHeadersOnly
+agent =  User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:36.0.1) Gecko/20100101 Firefox/36.0.1
+extraargs = --head
+follow_redirects = yes
+include_redirects = yes
+pings = 3
+timeout = 20
+insecure_ssl = 1
+offset = random
+
+++ CurlFTP
+pings = 3
+step = 3600
+timeout = 1200
+offset = random
+
++EchoPingDNS
+binary = /usr/bin/echoping
+forks = 5
+offset = 50%
+
++EchoPingHttp
+binary = /usr/bin/echoping
+forks = 5
+offset = 50%
+
++ EchoPingHttps
+binary = /usr/bin/echoping
+forks = 5
+offset = 50%
+accept_redirects = yes
+ignore_cache = yes
+
++ DNS
+binary = /usr/bin/dig
+timeout = 5
+forks = 5
+pings = 3
+offset = random
+
++ WifiParam
+binary = /sbin/iw
+pings = 3
+forks = 1
+offset = random
+
++ YoutubeDL
+binary = /usr/local/bin/youtube-dl
+options = --no-part -f best
+timeout = 300
+forks   = 1
+step    = 3600
+pings   = 3
+
++ speedtest
+binary = /usr/local/bin/speedtest-cli
+timeout = 300
+forks = 1
+step = 3600
+offset = random
+pings = 3
+
+++ speedtest-download
+measurement = download
+
+++ speedtest-upload
+measurement = upload
+
+++ speedtest-ping
+measurement = ping
